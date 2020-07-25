@@ -1,0 +1,30 @@
+
+
+<div>
+  <form class="form-width">
+    <mat-form-field class="form-field-width" style="width: 80%;">
+      <mat-label>{{'SEARCH' | oTranslate}}</mat-label>
+      <input class="mat-input-element" id="input" matInput #message maxlength="256"
+        placeholder="{{'EXAMPLE_TEXT_SEARCH' | oTranslate}}" type="text" value="" name="input-search"
+        (keyup)="onItemChange($event.target.value)" autocomplete="off" style="width: 100%; display: grid;">
+      <mat-hint align="start">
+        <strong>
+          <span *ngIf=" !mnjError " style="color: #0199c3">
+            {{'THREE_LETTER_MSJ' | oTranslate}}
+          </span>
+          <span class='mensaje-error' *ngIf=" mnjError  && mnjError.length > 0">
+            {{'THREE_LETTER_MSJ' | oTranslate}}
+          </span>
+        </strong>
+      </mat-hint>
+      <mat-hint align="end" style="color: #0199c3;">{{message.value.length}} / 256</mat-hint>
+    </mat-form-field>
+  </form>
+</div>
+<br>
+<br>
+<div *ngIf="dataRest">
+  <div *ngIf="dataRest.length > 0">
+    <app-result-list [dataMyList]="dataRestMyList" [dataRestList]="dataRestList"></app-result-list>
+  </div>
+</div>
